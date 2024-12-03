@@ -1,1 +1,1 @@
-export const ITEMS_API = './api/items';
+export const ITEMS_API = '/react-dnd-fe/api/items';

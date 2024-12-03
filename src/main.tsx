@@ -5,7 +5,11 @@ import App from './App.tsx'
 
 async function deferRender() {
   const { worker } = await import('./mocks/browser.ts');
-  return worker.start()
+  return worker.start({
+    serviceWorker: {
+      url: '/react-dnd-fe/mockServiceWorker.js',
+    }
+  })
 }
 
 deferRender().then(() => {

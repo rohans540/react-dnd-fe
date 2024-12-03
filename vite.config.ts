@@ -10,5 +10,12 @@ export default defineConfig({
   server: {
     host: 'localhost',
     port: 3000
+  },
+  base: '/react-dnd-fe/',
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: '/index.html',
+    }
   }
 })

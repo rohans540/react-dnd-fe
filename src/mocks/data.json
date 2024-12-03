@@ -3,30 +3,30 @@
         "type": "bank draft",
         "title": "Bank Draft",
         "position": 0,
-        "image": "assets/boaLogo.png"
+        "image": "/assets/boaLogo.png"
     },
     {
         "type": "bill-of-lading",
         "title": "Bill of Lading",
         "position": 1,
-        "image": "assets/citiLogo.jpeg"
+        "image": "/assets/citiLogo.jpeg"
     },
     {
         "type": "invoice",
         "title": "Invoice",
         "position": 2,
-        "image": "assets/iciciLogo.png"
+        "image": "/assets/iciciLogo.png"
     },
     {
         "type": "bank-draft-2",
         "title": "Bank Draft 2",
         "position": 3,
-        "image": "assets/pnbLogo.jpg"
+        "image": "/assets/pnbLogo.jpg"
     },
     {
         "type": "bill-of-lading-2",
         "title": "Bill of Lading 2",
         "position": 4,
-        "image": "assets/sbiLogo.jpg"
+        "image": "/assets/sbiLogo.jpg"
     }
 ]

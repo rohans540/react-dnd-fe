@@ -84,7 +84,7 @@ const App: React.FC = () => {
                 key={index}
                 id={ele?.position}
                 title={ele?.title}
-                image={ele.image}
+                image={`/react-dnd-fe${ele.image}`}
                 onClick={() => setSelected(ele.image)}
               />
             ))}
