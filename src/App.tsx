@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { DndContext, closestCenter, DragEndEvent } from '@dnd-kit/core';
 import { arrayMove, SortableContext, rectSortingStrategy } from '@dnd-kit/sortable';
-import { Card, Overlay, LastUpdate } from './components';
+import { Card, Overlay, LastUpdate, Spinner } from './components';
 import useFetchData from './hooks/useFetchData';
 import useLocalStorage from './hooks/useLocalStorage';
 import { ITEMS_API } from './constants/constant';
@@ -16,6 +16,7 @@ const App: React.FC = () => {
   const saveTimeout = useRef<NodeJS.Timeout | null>(null);
   const [lastSavedTime, setLastSavedTime] = useState<Date | null>(null);
   const [timeSinceLastSaved, setTimeSinceLastSaved] = useState<string>('');
+  const [loading, setIsLoading] = useState<boolean>(false);
   useLocalStorage();
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const App: React.FC = () => {
 
   const saveData = async (updatedItems: typeof items) => {
     try {
+      setIsLoading(true)
       await fetch(ITEMS_API, {
         method: 'POST',
         headers: {
@@ -43,8 +45,10 @@ const App: React.FC = () => {
       });
       setLastSavedTime(new Date());
       isDirty.current = false;
+      setIsLoading(false)
     } catch (error) {
       console.error('Failed to save data:', error);
+      setIsLoading(false);
     }
   };
 
@@ -90,6 +94,7 @@ const App: React.FC = () => {
             ))}
           </div>
           {selected && <Overlay image={selected} onClose={() => setSelected(null)} />}
+          <Spinner loading={loading} />
         </SortableContext>
       </DndContext>
     </div>
