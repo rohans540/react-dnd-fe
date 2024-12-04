@@ -93,7 +93,7 @@ const App: React.FC = () => {
               />
             ))}
           </div>
-          {selected && <Overlay image={selected} onClose={() => setSelected(null)} />}
+          {selected && <Overlay image={`/react-dnd-fe${selected}`} onClose={() => setSelected(null)} />}
           <Spinner loading={loading} />
         </SortableContext>
       </DndContext>
