@@ -56,7 +56,7 @@ const App: React.FC = () => {
   const handleDragEnd = useCallback(
     async (event: DragEndEvent) => {
       const { active, over } = event;
-  
+
       if (!over) return;
       if (active.id !== over.id) {
         const oldIndex = items.findIndex((item) => item.position === active.id);
@@ -65,13 +65,13 @@ const App: React.FC = () => {
           ...item,
           position: index + 1,
         }));
-  
+
         setItems(updatedItems);
         isDirty.current = true;
-  
+
         // Clear any existing timeout to debounce the API call
         if (saveTimeout.current) clearTimeout(saveTimeout.current);
-  
+
         // Set a new timeout to save data after 5 seconds
         saveTimeout.current = setTimeout(() => {
           saveData(updatedItems);
