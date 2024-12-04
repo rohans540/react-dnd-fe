@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { BeatLoader } from "react-spinners";
@@ -16,10 +16,12 @@ const Card: React.FC<CardTypes> = ({ id, title, image, onClick }) => {
     const [dragging, setDragging] = useState(false);
 
     const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
-    const style = {
-        transform: CSS.Transform.toString(transform),
-        transition,
-    };
+    const style = useMemo(() => {
+        return {
+            transform: CSS.Transform.toString(transform),
+            transition,
+        };
+    }, [transform, transition]);
 
     const handleMouseDown = () => setDragging(false); // Reset dragging state
     const handleMouseMove = () => setDragging(true); // Mark as dragging if the mouse moves
